@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "YNTextAttachment.h"
 
-@interface ViewController ()
+@interface ViewController ()<UITextViewDelegate>
 
 @property (nonatomic, strong) UITextView    *textView;
 @property (nonatomic, copy) NSMutableAttributedString *attributedString;
@@ -41,13 +41,15 @@
         // 文本容器的布局管理器
         NSLayoutManager *layoutManager = [NSLayoutManager new];
         [storage addLayoutManager:layoutManager];
-        
         _textContainer = [[NSTextContainer alloc] initWithSize:self.view.frame.size];
         [layoutManager addTextContainer:_textContainer];
         
         _textView = [[UITextView alloc] initWithFrame:self.view.frame textContainer:_textContainer];
-        _textView.editable = YES;
+        _textView.editable      = YES;
         _textView.scrollEnabled = YES;
+        _textView.delegate      = self;
+        _textView.dataDetectorTypes = UIDataDetectorTypeLink;
+
     }
     return _textView;
 }
@@ -71,11 +73,20 @@
                                                                   attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16]}];
     
     
+    /* 创建图片内容 */
     YNTextAttachment *attachment = [[YNTextAttachment alloc] initWithImage:image];
     NSAttributedString *text = [NSAttributedString attributedStringWithAttachment:attachment];
-    
     if ([_attributedString length]) [_attributedString appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n\t"]];
+    
+    /* 图片之前文本长度 */
+    NSInteger textLength = [_attributedString.string length];
     [_attributedString appendAttributedString:text];
+    
+    /* 添加图片链接跳转 */
+    [_attributedString addAttribute:NSLinkAttributeName
+                              value:[NSURL URLWithString:@"http://www.baidu.com"]
+                              range:NSMakeRange(textLength, [_attributedString.string length] - textLength)];
+    
     [_attributedString appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n\n\t"]];
     
     self.textView.contentSize = CGSizeMake(CGRectGetWidth(self.view.bounds), attachment.image.size.height);
@@ -83,6 +94,21 @@
 
     self.textView.attributedText = _attributedString;
    // NSLog(@"计算的页码数:%f", [_textView sizeThatFits:CGSizeMake(300, FLT_MAX)].height / 540.f);
+}
+
+- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange NS_AVAILABLE_IOS(7_0){
+    
+    NSLog(@"URL tap handle:%@",URL);
+    [[UIApplication sharedApplication] openURL:URL];
+    return YES;
+}
+
+- (BOOL)textView:(UITextView *)textView shouldInteractWithTextAttachment:(NSTextAttachment *)textAttachment inRange:(NSRange)characterRange NS_AVAILABLE_IOS(7_0){
+    
+    NSLog(@"image = %@",textAttachment.image);
+    NSLog(@"type = %@",textAttachment.fileType);
+    
+    return NO;
 }
 
 - (void)insertImage:(UIBarButtonItem *)item{

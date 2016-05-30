@@ -14,7 +14,8 @@
     
     if (self = [super init]) {
         
-        self.image = image /*[self imageWithSize:CGSizeMake(120, 100) sourceImage:image]*/ ;
+        self.image = image /*[self imageWithSize:CGSizeMake(120, 100) sourceImage:image]*/ ;        
+        
     }
     return self;
 }
@@ -37,7 +38,9 @@
     return CGRectMake(0, 0, CGRectGetWidth([[[UIApplication sharedApplication] delegate] window].bounds) - 10, self.image.size.height * factor);
 }
 
+
 #pragma mark - 创建一个可自动调整大小的默认图片
+
 - (UIImage *)imageWithSize:(CGSize)size sourceImage:(UIImage *)image
 {
     UIView *bgView = [[UIView alloc] init];
