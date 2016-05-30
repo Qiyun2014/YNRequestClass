@@ -17,6 +17,7 @@
 		FA4F2BB41CF97A5300F84388 /* YNRequestClassTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4F2BB31CF97A5300F84388 /* YNRequestClassTests.m */; };
 		FA4F2BBF1CF97A5400F84388 /* YNRequestClassUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4F2BBE1CF97A5400F84388 /* YNRequestClassUITests.m */; };
 		FA4F2BCE1CF97D2F00F84388 /* YNRequesClass.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4F2BCD1CF97D2F00F84388 /* YNRequesClass.m */; };
+		FA5E8B6B1CFC19D700D9A9EA /* YNTextAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5E8B6A1CFC19D700D9A9EA /* YNTextAttachment.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		FA4F2BC01CF97A5400F84388 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA4F2BCC1CF97D2F00F84388 /* YNRequesClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNRequesClass.h; sourceTree = "<group>"; };
 		FA4F2BCD1CF97D2F00F84388 /* YNRequesClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNRequesClass.m; sourceTree = "<group>"; };
+		FA5E8B691CFC19D700D9A9EA /* YNTextAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YNTextAttachment.h; sourceTree = "<group>"; };
+		FA5E8B6A1CFC19D700D9A9EA /* YNTextAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YNTextAttachment.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +135,8 @@
 				FA4F2B9D1CF97A5300F84388 /* AppDelegate.m */,
 				FA4F2B9F1CF97A5300F84388 /* ViewController.h */,
 				FA4F2BA01CF97A5300F84388 /* ViewController.m */,
+				FA5E8B691CFC19D700D9A9EA /* YNTextAttachment.h */,
+				FA5E8B6A1CFC19D700D9A9EA /* YNTextAttachment.m */,
 				FA4F2BCC1CF97D2F00F84388 /* YNRequesClass.h */,
 				FA4F2BCD1CF97D2F00F84388 /* YNRequesClass.m */,
 				FA4F2BA21CF97A5300F84388 /* Main.storyboard */,
@@ -352,6 +357,7 @@
 			files = (
 				FA4F2BCE1CF97D2F00F84388 /* YNRequesClass.m in Sources */,
 				FA4F2BA11CF97A5300F84388 /* ViewController.m in Sources */,
+				FA5E8B6B1CFC19D700D9A9EA /* YNTextAttachment.m in Sources */,
 				FA4F2B9E1CF97A5300F84388 /* AppDelegate.m in Sources */,
 				FA4F2B9B1CF97A5300F84388 /* main.m in Sources */,
 			);
