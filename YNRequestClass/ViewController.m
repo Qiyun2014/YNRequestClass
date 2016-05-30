@@ -93,8 +93,11 @@
     _textContainer.size = self.textView.contentSize;
 
     self.textView.attributedText = _attributedString;
+    self.textView.editable = NO;
    // NSLog(@"计算的页码数:%f", [_textView sizeThatFits:CGSizeMake(300, FLT_MAX)].height / 540.f);
 }
+
+
 
 - (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange NS_AVAILABLE_IOS(7_0){
     
@@ -105,11 +108,16 @@
 
 - (BOOL)textView:(UITextView *)textView shouldInteractWithTextAttachment:(NSTextAttachment *)textAttachment inRange:(NSRange)characterRange NS_AVAILABLE_IOS(7_0){
     
+    [textView.layoutManager invalidateDisplayForCharacterRange:characterRange];//refresh display
+    [textView.layoutManager invalidateLayoutForCharacterRange:characterRange actualCharacterRange:NULL];//refresh layout
+    
     NSLog(@"image = %@",textAttachment.image);
     NSLog(@"type = %@",textAttachment.fileType);
     
-    return NO;
+    return YES;
 }
+
+
 
 - (void)insertImage:(UIBarButtonItem *)item{
     
