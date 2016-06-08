@@ -84,7 +84,7 @@
     
     /* 添加图片链接跳转 */
     [_attributedString addAttribute:NSLinkAttributeName
-                              value:[NSURL URLWithString:@"http://www.baidu.com"]
+                              value:path
                               range:NSMakeRange(textLength, [_attributedString.string length] - textLength)];
     
     [_attributedString appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n\n\t"]];
